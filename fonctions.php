@@ -9,13 +9,14 @@ if(!isset($_SESSION['login'])){
     if(isset($_POST['valider']))
     {
     
-        if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['confirmpassword']) )
+        if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['confirmpassword']) and !empty($_POST['email']) )
         {
     
             $connexion=mysqli_connect('localhost','root','','blog');
             $requete0="SELECT * FROM utilisateurs WHERE login='".$_POST['login']."'";
             $query0=mysqli_query($connexion,$requete0);
             $resultat0=mysqli_fetch_row($query0);
+            var_dump($resultat0);
     
             if($resultat0==0)
             {
@@ -24,7 +25,7 @@ if(!isset($_SESSION['login'])){
                 {
                     $password=$_POST['password'];
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                    $requete= "INSERT INTO utilisateurs (login,password) VALUES ('".$_POST['login']."','".$hashed_password."')";
+                    $requete= "INSERT INTO utilisateurs (login,password,email,id_droits) VALUES ('".$_POST['login']."','".$hashed_password."','".$_POST['email']."',Null)";
                     $query=mysqli_query($connexion,$requete);
                     header('location:connexion.php');
 

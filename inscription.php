@@ -15,6 +15,7 @@
 					
 					<div id="">
 						Login :<br /> <input type="text" name="login"><br />
+						Email :<br /> <input type="text" name="email"><br />
 						Mdp :<br /><input type="password" name="password"><br />
 						Conf mdp : <br /><input type="password" name="confirmpassword"><br />
 					</div>
