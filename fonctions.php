@@ -3,13 +3,13 @@
 function inscription()
 {
 
-if(!isset($_SESSION['login'])){
+if(!isset($_SESSION['login']) ){
 
 
     if(isset($_POST['valider']))
     {
     
-        if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['confirmpassword']) and !empty($_POST['email']) )
+        if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['email']) and !empty($_POST['confirmpassword']) and $_POST['login']!="modérateur" or $_POST['login']!="administrateur" )
         {
     
             $connexion=mysqli_connect('localhost','root','','blog');
@@ -25,8 +25,9 @@ if(!isset($_SESSION['login'])){
                 {
                     $password=$_POST['password'];
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                    $requete= "INSERT INTO utilisateurs (login,password,email,id_droits) VALUES ('".$_POST['login']."','".$hashed_password."','".$_POST['email']."',Null)";
+                    $requete= "INSERT INTO utilisateurs (login,password,email, id_droits) VALUES ('".$_POST['login']."','".$hashed_password."','".$_POST['email']."',1)";
                     $query=mysqli_query($connexion,$requete);
+                    echo $requete.'<br/>';
                     header('location:connexion.php');
 
                 }
@@ -79,6 +80,7 @@ if(!isset($_SESSION['login'])){
             $requete= "SELECT Id,login,password FROM utilisateurs WHERE login='".$_POST['login']."'";
             $query=mysqli_query($connexion,$requete);
             $resultat=mysqli_fetch_row($query);
+            var_dump($resultat);
 
             $password=$_POST['password'];
 
@@ -97,7 +99,7 @@ if(!isset($_SESSION['login'])){
                         session_start();
                         $_SESSION['id']=$resultat[0];
                         $_SESSION['login']=$resultat[1];
-                        header('location:index.php');
+                        header('location:creer-article.php');
                     }
                     else
                     {
