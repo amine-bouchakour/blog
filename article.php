@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title>All Articles</title>
+<title>Article</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
