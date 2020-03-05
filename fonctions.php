@@ -9,7 +9,7 @@ function inscription()
         if(isset($_POST['valider']))
         {
         
-            if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['email']) and !empty($_POST['confirmpassword']) and $_POST['login']!="modérateur" or $_POST['login']!="administrateur" )
+            if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['email']) and !empty($_POST['confirmpassword']) )
             {
         
                 $connexion=mysqli_connect('localhost','root','','blog');
@@ -103,7 +103,7 @@ function connexion()
                             session_start();
                             $_SESSION['id']=$resultat[0];
                             $_SESSION['login']=$resultat[1];
-                            header('location:creer-article.php');
+                            header('location:articles.php');
                         }
                         else
                         {
