@@ -3,57 +3,58 @@
 function inscription()
 {
 
-if(!isset($_SESSION['login']) ){
+    if(!isset($_SESSION['login']) ){
 
 
-    if(isset($_POST['valider']))
-    {
-    
-        if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['email']) and !empty($_POST['confirmpassword']) and $_POST['login']!="modérateur" or $_POST['login']!="administrateur" )
+        if(isset($_POST['valider']))
         {
-    
-            $connexion=mysqli_connect('localhost','root','','blog');
-            $requete0="SELECT * FROM utilisateurs WHERE login='".$_POST['login']."'";
-            $query0=mysqli_query($connexion,$requete0);
-            $resultat0=mysqli_fetch_row($query0);
-            var_dump($resultat0);
-    
-            if($resultat0==0)
+        
+            if(!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['email']) and !empty($_POST['confirmpassword']) and $_POST['login']!="modérateur" or $_POST['login']!="administrateur" )
             {
-    
-                if($_POST['password']==$_POST['confirmpassword'])
+        
+                $connexion=mysqli_connect('localhost','root','','blog');
+                $requete0="SELECT * FROM utilisateurs WHERE login='".$_POST['login']."'";
+                $query0=mysqli_query($connexion,$requete0);
+                $resultat0=mysqli_fetch_row($query0);
+                var_dump($resultat0);
+        
+                if($resultat0==0)
                 {
-                    $password=$_POST['password'];
-                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                    $requete= "INSERT INTO utilisateurs (login,password,email, id_droits) VALUES ('".$_POST['login']."','".$hashed_password."','".$_POST['email']."',1)";
-                    $query=mysqli_query($connexion,$requete);
-                    echo $requete.'<br/>';
-                    header('location:connexion.php');
+        
+                    if($_POST['password']==$_POST['confirmpassword'])
+                    {
+                        $password=$_POST['password'];
+                        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                        $requete= "INSERT INTO utilisateurs (login,password,email, id_droits) VALUES ('".$_POST['login']."','".$hashed_password."','".$_POST['email']."',1)";
+                        $query=mysqli_query($connexion,$requete);
+                        echo $requete.'<br/>';
+                        header('location:connexion.php');
 
+                    }
+            
+                    else
+                    {
+                        echo '<div class="erreur">Mot de passe et confirmation de mot de passe différents.</div>'.'</br>';
+                    }
+        
                 }
         
                 else
                 {
-                    echo '<div class="erreur">Mot de passe et confirmation de mot de passe différents.</div>'.'</br>';
+                    echo '<div class="erreur">Le login est déjà existant, merci de le modifier et de réessayer de nouveau.</div>'.'<br/>';
                 }
-    
+        
             }
-    
-            else
+        
+        else
             {
-                echo '<div class="erreur">Le login est déjà existant, merci de le modifier et de réessayer de nouveau.</div>'.'<br/>';
+                echo '<div class="erreur">Veuillez remplir tous les champs.</div>'.'</br>';
             }
-    
+        
         }
-    
-    else
-        {
-            echo '<div class="erreur">Veuillez remplir tous les champs.</div>'.'</br>';
-        }
-    
     }
-}
-else{ header('location:index.php');}
+    else
+    { header('location:index.php');}
 
 
 
@@ -69,51 +70,55 @@ else{ header('location:index.php');}
 function connexion()
 
 {
-if(!isset($_SESSION['login'])){
-    
+    if(!isset($_SESSION['login'])){
+        
 
-    if(isset($_POST['valider']))
-    {
-        if(!empty($_POST['login']) and !empty($_POST['password']))
+        if(isset($_POST['valider']))
         {
-            $connexion=mysqli_connect('Localhost','root','','blog');
-            $requete= "SELECT Id,login,password FROM utilisateurs WHERE login='".$_POST['login']."'";
-            $query=mysqli_query($connexion,$requete);
-            $resultat=mysqli_fetch_row($query);
-            var_dump($resultat);
+            if(!empty($_POST['login']) and !empty($_POST['password']))
 
-            $password=$_POST['password'];
-
-
-            if($resultat==0)
             {
-                    echo '<div class="erreur">Login inexistant</div>'.'<br/>';
-            }
 
-            else
-            {
-                if($_POST['login']==$resultat[1])
+                $connexion=mysqli_connect('Localhost','root','','blog');
+                $requete= "SELECT id,login,password FROM utilisateurs WHERE login='".$_POST['login']."'";
+                $query=mysqli_query($connexion,$requete);
+                $resultat=mysqli_fetch_row($query);
+                var_dump($resultat);
+
+                $password=$_POST['password'];
+
+
+                if($resultat==0)
                 {
-                    if(password_verify($password, $resultat[2]))
+                        echo '<div class="erreur">Login inexistant</div>'.'<br/>';
+                }
+
+                else
+                {
+
+                    if($_POST['login']==$resultat[1])
                     {
-                        session_start();
-                        $_SESSION['id']=$resultat[0];
-                        $_SESSION['login']=$resultat[1];
-                        header('location:creer-article.php');
+                        if(password_verify($password, $resultat[2]))
+                        {
+                            session_start();
+                            $_SESSION['id']=$resultat[0];
+                            $_SESSION['login']=$resultat[1];
+                            header('location:creer-article.php');
+                        }
+                        else
+                        {
+                            echo '<div class="erreur">Mot de passe incorrecte</div>'.'<br/>';
+                        }
                     }
-                    else
-                    {
-                        echo '<div class="erreur">Mot de passe incorrecte</div>'.'<br/>';
-                    }
+
                 }
 
             }
-
         }
-    }
 
-}
-else{ header('location:index.php');}
+    }
+    else
+    { header('location:index.php');}
 
 }
 
