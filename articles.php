@@ -2,7 +2,8 @@
 
 <head>
 <title>All Articles</title>
-<link rel="stylesheet" href="style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="blog.css">
 </head>
 
 Sur cette page, les utilisateurs peuvent voir l’ensemble des articles, triés du
@@ -17,14 +18,80 @@ articles 11 à 15 ayant comme id_categorie 1).
 
 
 
-<?php
 
+<?php
+session_start();
+
+if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
+
+    $categorie=$_GET["categorie"];
+
+    if(!isset($categorie)){
+        $categorie=$id_categorie[3];
+    }
+    else{
+        $categorie=$_GET["categorie"];
+    }
+
+
+
+    // CONNEXION BASE DE DONNEE
+    $connexion=mysqli_connect("localhost","root","","blog");
+    $requetetoutarticles="SELECT * from articles where id_categorie=$categorie ORDER BY date ASC";
+    $query=mysqli_query($connexion,$requetetoutarticles);
+    $resultattoutarticles=mysqli_fetch_all($query);
+    var_dump($resultattoutarticles);
+
+    $requetelien_nom_id="SELECT nom from articles INNER JOIN categories where articles.id_categorie=categories.id and id_categorie=$categorie";
+    $query=mysqli_query($connexion,$requetelien_nom_id);
+    $resultatlien_nom_id=mysqli_fetch_all($query);
+    var_dump($resultatlien_nom_id);
+    $titrecategorie=$resultatlien_nom_id[0][0];
+
+    
+
+    ?>
+
+
+
+    <table>
+        <th>
+        <ul id="menu-accordeon">
+            <li><a href="articles.php?id_categorie=1"> <?php echo $titrecategorie ?></a>
+            <ul>
+            <li><a href="articles.php?categorie=1">1</a></li>
+            <li><a href="articles.php?categorie=2">2</a></li>
+            <li><a href="articles.php?categorie=3">3</a></li>
+            <li><a href="articles.php?categorie=4">4</a></li>
+        </ul>
+            </li>
+        </th>
+            
+            <?php 
+
+    foreach($resultattoutarticles as $article){
+        ?> 
+            <tr><td><?php echo $article[1] ?></td></tr>
+        <?php
+    }
+        ?>
+
+    </table>
+
+
+
+    <?php
+
+
+
+
+}
+else{
+    header("location:index.php");
+}
 
 
 ?>
-
-
-
 
 
 </html>
