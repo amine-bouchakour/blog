@@ -37,7 +37,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
 
     // CONNEXION BASE DE DONNEE
     $connexion=mysqli_connect("localhost","root","","blog");
-    $requetetoutarticles="SELECT * from articles  where id_categorie='".$categorie."' ORDER BY date ASC";
+    $requetetoutarticles="SELECT * from articles where id_categorie='".$categorie."' ORDER BY date ASC";
     $query=mysqli_query($connexion,$requetetoutarticles);
     $resultattoutarticles=mysqli_fetch_all($query);
     var_dump($resultattoutarticles);
