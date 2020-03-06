@@ -3,7 +3,7 @@
 <head>
 <title>All Articles</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="blog.css">
+<link rel="stylesheet" href="bloog.css">
 </head>
 
 Sur cette page, les utilisateurs peuvent voir l’ensemble des articles, triés du
@@ -46,8 +46,13 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
     $query=mysqli_query($connexion,$requetelien_nom_id);
     $resultatlien_nom_id=mysqli_fetch_all($query);
     var_dump($resultatlien_nom_id);
-    $titrecategorie=$resultatlien_nom_id[0][0];
 
+    $j=0;
+    if(isset($resultatlien_nom_id)){
+        $titrecategorie=$resultatlien_nom_id[$j][0];
+    }
+   
+    // echo $titrecategorie
     
 
     ?>
@@ -57,7 +62,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
     <table>
         <th>
         <ul id="menu-accordeon">
-            <li><a href="articles.php?id_categorie=1"> <?php echo $titrecategorie ?></a>
+            <li><a href="#"> <?php if(isset($titrecategorie)) {echo $titrecategorie;} else echo 'Choisir catégories'; ?></a>
             <ul>
             <li><a href="articles.php?categorie=1">1</a></li>
             <li><a href="articles.php?categorie=2">2</a></li>
