@@ -37,20 +37,21 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
 
     // CONNEXION BASE DE DONNEE
     $connexion=mysqli_connect("localhost","root","","blog");
-    $requetetoutarticles="SELECT * from articles where id_categorie=$categorie ORDER BY date ASC";
+    $requetetoutarticles="SELECT * from articles  where id_categorie='".$categorie."' ORDER BY date ASC";
     $query=mysqli_query($connexion,$requetetoutarticles);
     $resultattoutarticles=mysqli_fetch_all($query);
     var_dump($resultattoutarticles);
+    echo $requetetoutarticles;
 
-    $requetelien_nom_id="SELECT nom from articles INNER JOIN categories where articles.id_categorie=categories.id and id_categorie=$categorie";
+    $requetelien_nom_id="SELECT nom,id_categorie from articles INNER JOIN categories where articles.id_categorie=categories.id";
     $query=mysqli_query($connexion,$requetelien_nom_id);
     $resultatlien_nom_id=mysqli_fetch_all($query);
     var_dump($resultatlien_nom_id);
 
     $j=0;
-    if(isset($resultatlien_nom_id)){
-        $titrecategorie=$resultatlien_nom_id[$j][0];
-    }
+    // if(isset($resultatlien_nom_id)){
+    //     $titrecategorie=$resultatlien_nom_id[$j][0];
+    // }
    
     // echo $titrecategorie
     
@@ -62,12 +63,19 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
     <table>
         <th>
         <ul id="menu-accordeon">
-            <li><a href="#"> <?php if(isset($titrecategorie)) {echo $titrecategorie;} else echo 'Choisir catégories'; ?></a>
+            <li><a href="#"> <?php if(isset($_GET['categorie'])) {echo $_GET['categorie'];} else echo 'Choisir catégories'; ?></a>
             <ul>
-            <li><a href="articles.php?categorie=1">1</a></li>
-            <li><a href="articles.php?categorie=2">2</a></li>
+<?php
+            foreach($resultatlien_nom_id as $titrecategorie){
+               ?> <li><a href="articles.php?categorie=<?php echo $titrecategorie[0] ?>"><?php echo $titrecategorie[0] ?></a></li> 
+               
+               <?php
+            }
+?>
+            <!-- <li><a href="articles.php?categorie=1">1</a></li>
+            <li><a href="articles.php?categorie=<?php echo $resultatlien_nom_id[0][0] ?>"><?php echo $resultatlien_nom_id[0][0] ?></a></li>
             <li><a href="articles.php?categorie=3">3</a></li>
-            <li><a href="articles.php?categorie=4">4</a></li>
+            <li><a href="articles.php?categorie=4">4</a></li> -->
         </ul>
             </li>
         </th>
