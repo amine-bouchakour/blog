@@ -30,8 +30,10 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
     $requetetoutarticles="SELECT * from articles where id_categorie='".$categorie."' ORDER BY date DESC";
     $query=mysqli_query($connexion,$requetetoutarticles);
     $resultattoutarticles=mysqli_fetch_all($query);
-    // var_dump($resultattoutarticles);
+    //var_dump($resultattoutarticles);
     // echo $requetetoutarticles;
+
+    echo $resultattoutarticles[0][0];
 
     $requetelien_nom_id="SELECT nom,id from categories";
     $query1=mysqli_query($connexion,$requetelien_nom_id);
@@ -87,7 +89,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
             <?php for($k=$_GET['start']; $k<count($resultattoutarticles); $k++){
                 ?> 
 
-            <tr><td class="articles"><?php echo $resultattoutarticles[$k][1]; $compte++; ?></td></tr>
+            <tr><td class="articles"> <a href="article.php?id=<?php echo $resultattoutarticles[$k][0]; ;?>"> <?php echo $resultattoutarticles[$k][1]; $compte++; ?></a></td></tr>
 
             <?php if($compte==5){break;}  }?>
 
