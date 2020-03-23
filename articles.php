@@ -65,7 +65,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
 
         <th>
         <ul id="menu-accordeon">
-            <li><a href="#"> <?php if(isset($_GET['titre']) && !empty($_GET['titre'])) {echo $_GET['titre'];} else echo 'Choisir catégories'; ?></a>
+            <li><a href="#" class="titrePrincipal"> <?php if(isset($_GET['titre']) && !empty($_GET['titre'])) {echo $_GET['titre'];} else echo 'Choisir catégories'; ?></a>
             <ul>
             
             <?php 
@@ -93,17 +93,22 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
 
     </table>
 
-    <section id="pagination">
 
     <?php 
     if($_GET['start']>1){
         
-       ?> <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Articles précédent</a> 
+       ?> 
+    <section id="pagination">
+       
+       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Articles précédent</a> 
        <?php }?>
 
    <?php if(count($resultattoutarticles)>5 && $compte>4){
 
-       ?> <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivant</a>
+       ?> 
+    <section id="pagination">
+       
+       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivant</a>
        <?php }?>
        </section>
        </main>                                                                   
