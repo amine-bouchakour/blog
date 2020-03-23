@@ -137,7 +137,8 @@ height: auto;
 }
 
 .titrePrincipal{
-  background-color:#FFBA91 ;
+  background-color:rgb(247, 171, 128) ;
+  border:3px black solid;
   border-radius: 0.3em;
   text-shadow: 1px -1px 0 #767676, -1px 2px 1px #fffafa, -2px 4px 1px #e2dede, -3px 6px 1px #d6c2c2, -4px 8px 1px #e7b6b6, -5px 10px 1px #fa7777,
    -6px 12px 1px #fb843f, -8px 16px 1px;
