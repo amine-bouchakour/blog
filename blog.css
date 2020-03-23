@@ -1,6 +1,24 @@
 body{
+background-color: #FF8B46;
     
 }
+
+main[id=main_articles]{
+  padding: 1%;
+background-color: #804522;
+width: 90%;
+margin: 5% auto 0;
+border-radius: 1em;
+
+}
+
+/* #FFBA91
+
+#FF8B46
+
+#805D49
+
+#CC6E37 */
 
 /* MENU DEROULANT CLASSEMENT CATEGORIES */
 
@@ -67,7 +85,16 @@ body{
     text-align: center;
     color:white;
     width: 450px;
-    
+}
+
+td{
+  background-color:rgb(182, 111, 70) ;
+  font-size: 1.7vw;
+}
+
+th{
+  font-size: 1.6vw;
+
 }
 
 /* TABLE WALL OF FAME */
@@ -75,7 +102,7 @@ table{
     /* margin: 65px auto 0px; */
     /* border-radius: 1em 1em 1em 1em; */
     /* border:8px rgb(255, 189, 158)solid; */
-    background-color: rgb(0, 0, 0);
+    background-color: #805D49;
     margin:0 auto;
     /* -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); */
@@ -88,4 +115,18 @@ table{
 .articles{
   width: 40%;
   height: 100px;
+}
+
+
+#pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(209, 209, 209);
+  border:2px black solid;
+  width: 25.5%;
+  font-size: x-large;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 0.5em;
 }

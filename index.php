@@ -42,7 +42,7 @@
 ?>
 
 
-
+<a href="articles.php?categorie=&titre=&start=">Voir tous les articles</a>
 
 
 

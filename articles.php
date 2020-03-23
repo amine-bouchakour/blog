@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="blog.css">
 </head>
 
+
+<body>
+    
 <?php
 session_start();
 
@@ -56,6 +59,8 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
                                                                                     <!-- Lien a recuperer pour venir sur cette page -->
                                                                                     <!-- "articles.php?categorie=&titre=&start=" -->
 
+<main id="main_articles">
+
     <table>
 
         <th>
@@ -65,10 +70,11 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
             
             <?php 
 
-                for ($i=0; $i<$nombre_titres; $i++){  ?> 
-                <li><a href="articles.php?categorie=<?php echo $resultatlien_nom_id[$i][1] ?>&amp;titre=<?php echo $resultatlien_nom_id[$i][0] ?>&amp;start=<?php echo $start=0 ?>"><?php if($_GET['titre']!=$resultatlien_nom_id[$i][0]) echo $resultatlien_nom_id[$i][0] ?></a></li> 
-
-            <?php $compte=0; } ?>
+                for ($i=0; $i<$nombre_titres; $i++){ 
+                    if($_GET['titre']!=$resultatlien_nom_id[$i][0]){
+                    ?> 
+                <li><a href="articles.php?categorie=<?php echo $resultatlien_nom_id[$i][1] ?>&amp;titre=<?php echo $resultatlien_nom_id[$i][0] ?>&amp;start=<?php echo $start=0 ?>"><?php  echo $resultatlien_nom_id[$i][0] ?></a></li> 
+                    <?php } $compte=0; } ?>
 
             <!-- <li><a href="articles.php?categorie=1">1</a></li>
             <li><a href="articles.php?categorie=</a></li>
@@ -86,16 +92,21 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
             <?php if($compte==5){break;}  }?>
 
     </table>
+
+    <section id="pagination">
+
     <?php 
     if($_GET['start']>1){
         
-       ?> <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Article précédent</a> 
+       ?> <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Articles précédent</a> 
        <?php }?>
 
-   <?php if(count($resultattoutarticles)>5){
+   <?php if(count($resultattoutarticles)>5 && $compte>4){
 
-       ?> <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Article  suivant</a>
+       ?> <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivant</a>
        <?php }?>
+       </section>
+       </main>                                                                   
 
     <?php
 
@@ -106,6 +117,9 @@ else{
 
 
 ?>
+
+</body>
+
 
 
 </html>
