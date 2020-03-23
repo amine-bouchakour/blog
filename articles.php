@@ -4,6 +4,7 @@
 <title>All Articles</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="blog.css">
+
 </head>
 
 
@@ -101,7 +102,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
        ?> 
     <section id="pagination">
        
-       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Articles précédent</a> 
+       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Articles précédents</a> 
        <?php }?>
 
    <?php if(count($resultattoutarticles)>5 && $compte>4){
@@ -109,7 +110,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
        ?> 
     <section id="pagination">
        
-       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivant</a>
+       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivants</a>
        <?php }?>
        </section>
        </main>                                                                   

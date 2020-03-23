@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Roboto&display=swap');
+
 body{
-background-color: #FF8B46;
-    
+background-color: rgba(255, 138, 70, 0.829);
+font-family: 'Roboto', sans-serif;
 }
 
 main[id=main_articles]{
-  padding: 1%;
-background-color: #804522;
+padding: 1%;
+background-color: #804522e7;
 width: 90%;
-margin: 5% auto 0;
+margin: 3% auto 0;
 border-radius: 1em;
-
+border:5px black solid;
+box-shadow: 2px 14px 14px 8px rgb(36, 35, 35);
 }
 
 /* #FFBA91
@@ -21,13 +24,11 @@ border-radius: 1em;
 #CC6E37 */
 
 /* MENU DEROULANT CLASSEMENT CATEGORIES */
-
 #menu-accordeon {
     padding:0;
     margin:0;
     list-style:none;
     text-align: center;
-    width: 180px;
   }
   #menu-accordeon ul {
     padding:0;
@@ -36,11 +37,10 @@ border-radius: 1em;
     text-align: center;
   }
   #menu-accordeon li {
-     /* background-image: linear-gradient(to bottom, rgb(226, 90, 72) 0%, rgb(52, 71, 90) 100%); */
      border-radius: 6px;
      margin-bottom:2px;
      border:solid 1px #333A40;
-     width: 440px;
+     width: 100%;
   }
   #menu-accordeon li li {
      max-height:0;
@@ -50,7 +50,6 @@ border-radius: 1em;
      box-shadow: none;
      border:none;
      margin:0;
-     /* background: rgb(226, 90, 72); */
 
   }
   #menu-accordeon a {
@@ -58,15 +57,16 @@ border-radius: 1em;
     text-decoration: none;
     color: #fff;
     padding: 8px 0;
-    font-family: verdana;
-    font-size:1.2em;
+    font-family: 'Liu Jian Mao Cao', cursive;
+padding: 3% 0 5% 0;
+    font-size:3vw;
+    color: #131313;
+
   }
   #menu-accordeon ul li a, #menu-accordeon li:hover li a {
     font-size:1em;
   }
-  #menu-accordeon li:hover {
-     /* background: rgb(226, 90, 72); */
-  }
+  
   #menu-accordeon li li:hover {
      background: #999;
   }
@@ -78,34 +78,36 @@ border-radius: 1em;
     max-height: 15em;
   }
 
-  table,tr,td{
-    border:2px black solid;
-    border-radius: 6px;
-    border:2px rgb(0, 0, 0) solid;
-    text-align: center;
-    color:white;
-    width: 450px;
+table,tr,td{
+border:2px black solid;
+border-radius: 6px;
+border:2px rgb(0, 0, 0) solid;
+text-align: center;
+color:white;
+border-radius: 0.5em;
+width: 40%;
+margin:2% auto;
+
 }
 
 td{
-  background-color:rgb(182, 111, 70) ;
-  font-size: 1.5vw;
+background-color:rgb(188, 119, 63) ;
+font-size: 1.5vw;
+width: 40%;
+box-shadow: 1px 1px 1px 0.5px rgb(36, 35, 35);
 }
 
 th{
-  font-size: 1.5vw;
-
+font-size: 1.5vw;
 }
 
-/* TABLE WALL OF FAME */
+
+
 table{
-    /* margin: 65px auto 0px; */
-    /* border-radius: 1em 1em 1em 1em; */
-    /* border:8px rgb(255, 189, 158)solid; */
-    background-color: #805D49;
-    margin:0 auto;
-    /* -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0); */
+background-color: #805D49;
+border:5px black solid;
+box-shadow: 2px 14px 14px 8px rgb(36, 35, 35);
+height: auto;
 }
 
 .form{
@@ -115,6 +117,7 @@ table{
 .articles{
   width: 40%;
   height: 100px;
+
 }
 
 
@@ -124,17 +127,23 @@ table{
   justify-content: space-around;
   background-color: rgb(209, 209, 209);
   border:2px black solid;
-  width: 25.5%;
+  width: 39%;
   font-size: x-large;
   margin: 0 auto;
   padding: 5px;
   border-radius: 0.5em;
+  border:5px black solid;
+  box-shadow: 2px 4px 14px 8px rgb(36, 35, 35);
 }
 
 .titrePrincipal{
   background-color:#FFBA91 ;
+  border-radius: 0.3em;
+  text-shadow: 1px -1px 0 #767676, -1px 2px 1px #fffafa, -2px 4px 1px #e2dede, -3px 6px 1px #d6c2c2, -4px 8px 1px #e7b6b6, -5px 10px 1px #fa7777,
+   -6px 12px 1px #fb843f, -8px 16px 1px;
 }
 
 a{
+  color: black;
   text-decoration: none;
 }
