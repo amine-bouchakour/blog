@@ -33,7 +33,6 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
     //var_dump($resultattoutarticles);
     // echo $requetetoutarticles;
 
-    echo $resultattoutarticles[0][0];
 
     $requetelien_nom_id="SELECT nom,id from categories";
     $query1=mysqli_query($connexion,$requetelien_nom_id);
