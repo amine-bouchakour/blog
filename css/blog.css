@@ -192,6 +192,9 @@ background-color: #FFBA91;
 font-size: 1.5vw;
 margin: auto;
 padding: 1%;
+width: 20%;
+font-family: 'Roboto', sans-serif;
+text-align: center;
 border-radius: 0.5em;
 box-shadow: 4px 4px 12px black;
 
@@ -233,7 +236,7 @@ margin: 4% auto 3%;
 text-align: center;
 border-radius: 0.5em;
 font-size: 1.7vw;
-padding: 1%;
+padding: 1px 0 1px 0;
 background-color: #e7b6b6;
 font-family: 'Liu Jian Mao Cao', cursive;
 box-shadow: 4px 4px 12px black;
@@ -241,10 +244,6 @@ box-shadow: 4px 4px 12px black;
 
 }
 
-#lastarticles{
-font-family: 'Roboto', sans-serif;
-text-align: center;
-}
 
 #titre{
     background-color: #805D49;

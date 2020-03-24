@@ -24,7 +24,7 @@ require("templates/header.phtml");
 ?>
 
 <section id="texte_accueil">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Ab vero repellendus, culpa eaque recusandae labore dolore aut <br> sunt ex ipsam nesciunt architecto rerum omnis atque ad. <br> Nulla officia tenetur fugit!</p>
+    <p>Bienvenue à tous sur notre blog Music'N Blog ! <br> Vous êtes passionnée de musique et vous voulez en parlez ? <br> c'est içi et pas ailleurs que ça se passe :) <br> Merçi de respecter les autres utilisateurs ainsi que l'équipe de modération <br> On vous attend, vous les Zicos et autres ;) !</p>
 </section>
 
 <h1 class="titre0">Les 3 derniers articles</h1>
@@ -37,13 +37,17 @@ require("templates/header.phtml");
     $resultattoutarticles=mysqli_fetch_all($query1);
     // var_dump($resultattoutarticles);
 
+    
     for($i=0; $i<3; $i++){
+        $date = $resultattoutarticles[$i][1];
+        $datef= date('Y-m-d', strtotime($date));
+
         ?>
         <div id="lastarticles"> <?php 
         echo "<div id=titre>".ucfirst($resultattoutarticles[$i][2])."</div><br/>";
-        echo "Par ".ucfirst($resultattoutarticles[$i][3])."<br/>";
-        echo "Titre : ".ucfirst($resultattoutarticles[$i][0])."<br/>";
-        echo ucfirst($resultattoutarticles[$i][1])."<br/>";
+        echo '"'.ucfirst($resultattoutarticles[$i][0]).'"'.'<br/></br>';
+        echo "By ".ucfirst($resultattoutarticles[$i][3]);
+        echo " le ".$datef."<br/>";
         ?> </div> <br>
         <?php
     }
