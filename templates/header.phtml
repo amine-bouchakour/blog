@@ -1,0 +1,53 @@
+<?php
+
+$connexion = getCo();
+$requete_head = "SELECT * FROM `utilisateurs` WHERE login = '".$_SESSION['login']."'";
+$query_head = mysqli_query($connexion,$requete_head);
+$resultat_head = mysqli_fetch_all($query_head);
+
+// var_dump($_SESSION);
+
+
+$requete_cat = "SELECT * FROM categories";
+$query_cat = mysqli_query($connexion, $requete_cat);
+$resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
+
+// var_dump($resultat_cat);
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <header id="head-container">
+        <nav>
+            <ul id="ul-container">
+                <li class="head-li"><a class="head-lien" href="index.php">Accueil</a></li>
+                <li id="dropdown" class="head-li">
+                    <a class="head-lien" href="#">Catégories</a>
+                    <ul id="ulofcat">
+                        <?php foreach($resultat_cat as $cat): ?>
+                            <li id="dropdown-child"><a href="articles.php?categorie=<?php echo $cat["id"] ?>&titre=<?php echo $cat["nom"] ?>&start=0"><?php echo $cat["nom"]; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+                <!-- <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?> -->
+                <li class="head-li"><a class="head-lien" href="cree-article.php">Créer un article</a></li>
+                <!-- <?php endif; ?> -->
+                <?php if(isset($_SESSION["login"]) && $_SESSION["login"] == "admin"): ?>
+                <li class="head-li"><a class="head-lien" href="admin.php">Administration</a></li>
+                <?php endif; ?>
+                <?php if(!isset($_SESSION["login"])): ?>      
+                <li class="head-li"><a class="head-lien" href="inscription.php">Inscription</a></li>
+                <li class="head-li"><a class="head-lien" href="connexion.php">Connexion</a></li>
+                <?php else : ?>
+                <li class="head-li"><a class="head-lien" href="profil.php">Profil</a></li>
+                <li class="head-li"><a class="head-lien" href="index.php?destroy=die">Déconnexion(<?=$_SESSION["login"] ?>)</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    </header>
