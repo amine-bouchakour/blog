@@ -10,15 +10,26 @@
 
 
 
-<body>
+<body id="body_index">
 
+<main id="main_index">
+<?php
 
+require_once("libraries/utilities.php");
+require_once("libraries/functions.php");
 
+// $idArticle = $_GET["id"];
+// var_dump($_GET);
+require("templates/header.phtml");
+?>
 
+<section id="texte_accueil">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Ab vero repellendus, culpa eaque recusandae labore dolore aut <br> sunt ex ipsam nesciunt architecto rerum omnis atque ad. <br> Nulla officia tenetur fugit!</p>
+</section>
 
-<h1>Les 3 derniers articles</h1>
+<h1 class="titre0">Les 3 derniers articles</h1>
 
-
+<section id="lastnews">
 <?php
     $connexion=mysqli_connect("localhost","root","","blog");
     $requetetoutarticles="SELECT article,date,nom,login from articles INNER JOIN categories ON articles.id_categorie=categories.id INNER JOIN utilisateurs ON articles.id_utilisateur=utilisateurs.id ORDER BY date DESC";
@@ -28,11 +39,11 @@
 
     for($i=0; $i<3; $i++){
         ?>
-        <div> <?php 
-        echo "Catégorie = ".ucfirst($resultattoutarticles[$i][2])."<br/>";
-        echo "Login = ".ucfirst($resultattoutarticles[$i][3])."<br/>";
-        echo "Articles = ".ucfirst($resultattoutarticles[$i][0])."<br/>";
-        echo "Date de parution = ".ucfirst($resultattoutarticles[$i][1])."<br/>";
+        <div id="lastarticles"> <?php 
+        echo "<div id=titre>".ucfirst($resultattoutarticles[$i][2])."</div><br/>";
+        echo "Par ".ucfirst($resultattoutarticles[$i][3])."<br/>";
+        echo "Titre : ".ucfirst($resultattoutarticles[$i][0])."<br/>";
+        echo ucfirst($resultattoutarticles[$i][1])."<br/>";
         ?> </div> <br>
         <?php
     }
@@ -40,14 +51,16 @@
 
 
 ?>
+</section>
 
-
-<a href="articles.php?categorie=&titre=&start=">Voir tous les articles</a>
-
-
-
+<div class="aligncenter">
+<a href="articles.php?categorie=&titre=&start=" >Voir tous les articles</a>
+</div>
+<br>
+</main>
 </body>
 
+<?php require("templates/footer.phtml"); ?>
 
 
 </html>

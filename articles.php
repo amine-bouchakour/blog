@@ -3,15 +3,23 @@
 <head>
 <title>All Articles</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="blog.css">
+<link rel="stylesheet" href="css/blog.css">
 
 </head>
 
 
-<body>
+<body id="bodyArticles">
+<?php
+
+require_once("libraries/utilities.php");
+require_once("libraries/functions.php");
+
+// $idArticle = $_GET["id"];
+// var_dump($_GET);
+require("templates/header.phtml");
+?>
     
 <?php
-session_start();
 
 if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
 
@@ -124,6 +132,7 @@ else{
 
 
 ?>
+<?php require("templates/footer.phtml"); ?>
 
 </body>
 
