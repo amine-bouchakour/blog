@@ -1,3 +1,22 @@
-body{
-    
+/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto&display=swap');
+/* End Imports */
+/* Init */
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+p{
+    margin: 0;
+}
+.error{
+    color: rgb(167, 0, 0);
+}
+/* End Init */
+main{
+    width: 100%;
+    height: 95%;
 }
