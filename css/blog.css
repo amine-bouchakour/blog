@@ -1,0 +1,616 @@
+@import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Roboto&display=swap');
+
+html, body{
+height: 100%;
+width: 100%;
+margin: 0;
+padding: 0;
+background-color: rgba(255, 138, 70, 0.829);
+
+}
+
+#bodyArticles{
+background-color: rgba(255, 138, 70, 0.829);
+font-family: 'Roboto', sans-serif;
+}
+
+main[id=main_articles]{
+padding: 1%;
+background-color: #804522e7;
+width: 90%;
+height: 90%;
+margin: 3% auto 3%;
+border-radius: 1em;
+border:5px black solid;
+box-shadow: 2px 14px 14px 8px rgb(36, 35, 35);
+}
+
+/* #FFBA91
+#FF8B46
+#805D49
+#CC6E37 */
+
+/* MENU DEROULANT CLASSEMENT CATEGORIES */
+#menu-accordeon {
+    padding:0;
+    margin:0;
+    list-style:none;
+    text-align: center;
+  }
+  #menu-accordeon ul {
+    padding:0;
+    margin:0;
+    list-style:none;
+    text-align: center;
+  }
+  #menu-accordeon li {
+     border-radius: 6px;
+     margin-bottom:2px;
+     border:solid 1px #333A40;
+     width: 100%;
+  }
+  #menu-accordeon li li {
+     max-height:0;
+     overflow: hidden;
+     transition: all .5s;
+     border-radius:0;
+     box-shadow: none;
+     border:none;
+     margin:0;
+
+  }
+  #menu-accordeon a {
+    display:block;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 0;
+    font-family: 'Liu Jian Mao Cao', cursive;
+padding: 3% 0 5% 0;
+    font-size:3vw;
+    color: #131313;
+
+  }
+  #menu-accordeon ul li a, #menu-accordeon li:hover li a {
+    font-size:1em;
+  }
+  
+  #menu-accordeon li li:hover {
+     background: #999;
+  }
+  #menu-accordeon ul li:last-child {
+     border-radius: 0 0 6px 6px;
+     border:none;
+  }
+  #menu-accordeon li:hover li {
+    max-height: 15em;
+  }
+
+table,tr,td{
+border:2px black solid;
+border-radius: 6px;
+border:2px rgb(0, 0, 0) solid;
+text-align: center;
+color:white;
+border-radius: 0.5em;
+width: 40%;
+margin:2% auto;
+
+}
+
+td{
+background-color:rgb(188, 119, 63) ;
+font-size: 1.5vw;
+width: 40%;
+box-shadow: 1px 1px 1px 0.5px rgb(36, 35, 35);
+}
+
+th{
+font-size: 1.5vw;
+}
+
+
+
+table{
+background-color: #805D49;
+border:5px black solid;
+box-shadow: 2px 14px 14px 8px rgb(36, 35, 35);
+height: auto;
+}
+
+.form{
+    margin:50px auto;
+}
+
+.articles{
+  width: 40%;
+  height: 100px;
+
+}
+
+
+#pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(209, 209, 209);
+  border:2px black solid;
+  width: 39%;
+  font-size: x-large;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 0.5em;
+  border:5px black solid;
+  box-shadow: 2px 4px 14px 8px rgb(36, 35, 35);
+}
+
+.titrePrincipal{
+  background-color:rgb(247, 171, 128) ;
+  border:3px black solid;
+  border-radius: 0.3em;
+  text-shadow: 1px -1px 0 #767676, -1px 2px 1px #fffafa, -2px 4px 1px #e2dede, -3px 6px 1px #d6c2c2, -4px 8px 1px #e7b6b6, -5px 10px 1px #fa7777,
+   -6px 12px 1px #fb843f, -8px 16px 1px;
+}
+
+#bodyArticles a{
+  text-decoration: none;
+}
+
+
+
+
+
+/* PAGE INDEX */
+
+
+main[id=main_index]{
+background-color: rgb(255, 138, 70, 0.829);
+width: 100%;
+height: 100%;
+box-shadow: 2px 14px 14px 8px rgb(36, 35, 35);
+}
+
+#body_index{
+}
+
+section[id=lastnews]{
+width: 90%;
+margin: 0 auto;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+background-color: #CC5537;
+padding: 2%;
+border-radius: 0.5em;
+box-shadow: 4px 4px 12px black;
+
+
+}
+
+#lastarticles{
+border: 2px black solid;
+background-color: #FFBA91;
+font-size: 1.5vw;
+margin: auto;
+padding: 1%;
+border-radius: 0.5em;
+box-shadow: 4px 4px 12px black;
+
+
+}
+
+.aligncenter{
+text-align: center;
+font-family: 'Liu Jian Mao Cao', cursive;
+font-size: 2vw;
+box-shadow: 4px 4px 12px black;
+}
+
+.titre0{
+text-align: center;
+font-family: 'Liu Jian Mao Cao', cursive;
+font-size: 2vw;
+}
+
+div[class=aligncenter]{
+height: auto ;
+padding: 5px;
+width: 12% ;
+font-size: 25px;
+border-radius: 0.5em;
+font-weight: bold;
+border:1px black solid;
+background-color: #d6c2c2;
+margin: 1% auto;
+}
+
+#body_index a{
+text-decoration: none;
+}
+  
+section[id=texte_accueil]{
+width: 70%;
+margin: 4% auto 3%;
+text-align: center;
+border-radius: 0.5em;
+font-size: 1.7vw;
+padding: 1%;
+background-color: #e7b6b6;
+font-family: 'Liu Jian Mao Cao', cursive;
+box-shadow: 4px 4px 12px black;
+
+
+}
+
+#lastarticles{
+font-family: 'Roboto', sans-serif;
+text-align: center;
+}
+
+#titre{
+    background-color: #805D49;
+    color: white;
+    border-radius: 0.2em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CODE SERGE */
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////*/
+
+
+
+
+/* ----------> HEADER <---------- */
+
+
+.head-li{
+    padding: 34px 38px;
+}
+
+.head-li:hover{
+    background-color: #FF9457;
+    border: 3px ridge black;
+    box-shadow: 0px 0px 12px black;
+    padding: 38px;
+}
+
+.head-lien{
+    color: white;
+    text-decoration: none;
+    font-family: 'Patua One', cursive;
+    text-shadow: 1px 1px 3px black;
+}
+
+#head-container{
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #805D49;
+    box-shadow: 0px 4px 3px black;
+    border: 3px ridge #3e2626;
+}
+
+#ul-container{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+#dropdown:hover{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 73.86px;
+    height: 18px;
+}
+
+#dropdown-child{
+    display: none;
+    border: 1px solid black;
+}
+
+#dropdown-child a{
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+#dropdown:hover #dropdown-child{
+    display: block;
+    padding: 10px 45px;
+    border-bottom: 1px ridge black;
+    background-color: #803205;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#ulofcat{
+    position: relative;
+    padding: 0;
+    top: 124px;
+    left: -112px;
+    box-shadow: 0px 4px 12px black;
+}
+
+#dropdown:hover #dropdown-child:hover {
+    transform: scale(1.1);
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px black;
+    background-color: #FF8945;
+}
+
+#dropdown:hover #dropdown-child:hover a{
+    transform: scale(1.2);
+    text-shadow: 1px 1px 3px black;
+}
+
+
+
+/* ----------> FOOTER <---------- */
+
+
+
+#foot-container{
+    background-color: #421A03;
+    bottom: 0;
+    width: -webkit-fill-available;
+    display: flex;
+}
+
+#foot-ul-cont{
+    flex-basis: 10%;
+    list-style-type: square;
+    font-size: 14px;
+}
+
+#vide{
+    flex-basis: 10%;
+}
+
+#copyright{
+    flex-basis: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+}
+
+.foot-lien{
+    text-decoration: none;
+    color: white;
+    font-family: 'Patua One', cursive;
+}
+
+.foot-lien:hover{
+    color:#CC5537
+}
+
+.foot-listyle{
+    color:#FF943F;
+}
+
+
+
+/* ----------> ARTICLE <---------- */
+
+
+
+
+
+#main-art{
+height: 90%;
+}
+
+#pgp-art{
+    margin: 0;
+}
+
+
+
+/* ----------> CREER UN ARTICLE <---------- */
+
+
+
+#main-creart{
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#art-of-creart{
+    display: flex;
+    height: 600px;
+    width: 800px;
+    border: 1px ridge black;
+    border-radius: 12px;
+    background-color: white;
+}
+
+#block-creart{
+    flex-basis: 40%;
+    background-color: black;
+    border-radius: 12px 0 0 12px;
+}
+
+#form-creart{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 90%;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #b5acac;
+}
+
+#block-creart2{
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#select-containt{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+}
+
+#block-form-creart{
+    display: flex;
+    flex-basis: 66%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 250px;
+}
+
+#selCat{
+    width: 150px;
+    padding: 10px 14px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #FFBA91;
+}
+
+#button-creart{
+    width: 150px;
+    padding: 10px 14px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+#button-creart:hover{
+    background-color: #805D49;
+}
+
+#textArt{
+    border: 3px ridge black;
+    resize: none;
+    height: 103px;
+    padding: 5px;
+}
+
+#creart-title{
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+    margin: 0;
+}
+
+#error-txt-creart{
+    position: absolute;
+    top: 265px;
+    left: 980px;
+    background-color: red;
+    padding: 8px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
