@@ -1,14 +1,3 @@
-<html>
-
-<head>
-<title>All Articles</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="css/blog.css">
-
-</head>
-
-
-<body id="bodyArticles">
 <?php
 
 require_once("libraries/utilities.php");
@@ -69,8 +58,8 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
                                                                                     <!-- Lien a recuperer pour venir sur cette page -->
                                                                                     <!-- "articles.php?categorie=&titre=&start=" -->
 
-<main id="main_articles">
-
+<main id="main-articles">
+    <section  id="section_articles">
     <table>
 
         <th>
@@ -92,6 +81,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
             <li><a href="articles.php?categorie=4">4</a></li> -->
         </ul>
             </li>
+        </ul>
         </th>
             
             <?php for($k=$_GET['start']; $k<count($resultattoutarticles); $k++){
@@ -121,6 +111,7 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
        <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivants</a>
        <?php }?>
        </section>
+       </section>
        </main>                                                                   
 
     <?php
@@ -133,9 +124,3 @@ else{
 
 ?>
 <?php require("templates/footer.phtml"); ?>
-
-</body>
-
-
-
-</html>

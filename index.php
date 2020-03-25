@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    
-    <title>Index</title>
-</head>
-
-
-
-<body id="body_index">
-
-<main id="main_index">
 <?php
 
 require_once("libraries/utilities.php");
@@ -21,8 +6,11 @@ require_once("libraries/functions.php");
 // $idArticle = $_GET["id"];
 // var_dump($_GET);
 require("templates/header.phtml");
-?>
 
+ob_start(); // ça permet d'éviter le bug du header d'hier
+
+?>
+<main id="main_index">
 <section id="texte_accueil">
     <p>Bienvenue à tous sur notre blog Music'N Blog ! <br> Vous êtes passionnée de musique et vous voulez en parlez ? <br> c'est içi et pas ailleurs que ça se passe :) <br> Merçi de respecter les autres utilisateurs ainsi que l'équipe de modération <br> On vous attend, vous les Zicos et autres ;) !</p>
 </section>
@@ -62,9 +50,14 @@ require("templates/header.phtml");
 </div>
 <br>
 </main>
-</body>
+<?php require("templates/footer.phtml");
 
-<?php require("templates/footer.phtml"); ?>
+if(isset($_GET['destroy'])){
+    session_destroy();
+    header("Location:index.php");
+}
 
+ob_end_flush(); // ça permet d'éviter le bug du header d'hier
 
-</html>
+?>
+
