@@ -1,24 +1,15 @@
 <?php
-<<<<<<< HEAD
-
-$connexion = getCo();
-=======
 if(isset($_SESSION['login']) && !empty($_SESSION['login'])){
 
 $connexion = mysqli_connect("localhost", "root", "", "blog");
->>>>>>> master
 $requete_head = "SELECT * FROM `utilisateurs` WHERE login = '".$_SESSION['login']."'";
 $query_head = mysqli_query($connexion,$requete_head);
 $resultat_head = mysqli_fetch_all($query_head);
 
 // var_dump($_SESSION);
-<<<<<<< HEAD
-
-=======
 }
 
 $connexion = mysqli_connect("localhost", "root", "", "blog");
->>>>>>> master
 
 $requete_cat = "SELECT * FROM categories";
 $query_cat = mysqli_query($connexion, $requete_cat);
@@ -42,16 +33,6 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
                 <li id="dropdown" class="head-li">
                     <a class="head-lien" href="#">Catégories</a>
                     <ul id="ulofcat">
-<<<<<<< HEAD
-                        <?php foreach($resultat_cat as $cat){ ?>
-                            <li id="dropdown-child"><a href="articles.php?categorie=<?php echo $cat["id"]; ?>&titre=<?php echo $cat["nom"]; ?>&start=0"><?php echo $cat["nom"]; ?></a></li>
-                        <?php } ?>
-                    </ul>
-                </li>
-                <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?>
-                <li class="head-li"><a class="head-lien" href="cree-article.php">Créer un article</a></li>
-                <?php endif; ?>
-=======
                         <?php foreach($resultat_cat as $cat): ?>
                             <li id="dropdown-child"><a href="articles.php?categorie=<?php echo $cat["id"] ?>&titre=<?php echo $cat["nom"] ?>&start=0"><?php echo $cat["nom"]; ?></a></li>
                         <?php endforeach; ?>
@@ -60,18 +41,13 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
                 <!-- <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?> -->
                 <li class="head-li"><a class="head-lien" href="cree-article.php">Créer un article</a></li>
                 <!-- <?php endif; ?> -->
->>>>>>> master
                 <?php if(isset($_SESSION["login"]) && $_SESSION["login"] == "admin"): ?>
                 <li class="head-li"><a class="head-lien" href="admin.php">Administration</a></li>
                 <?php endif; ?>
                 <?php if(!isset($_SESSION["login"])): ?>      
                 <li class="head-li"><a class="head-lien" href="inscription.php">Inscription</a></li>
                 <li class="head-li"><a class="head-lien" href="connexion.php">Connexion</a></li>
-<<<<<<< HEAD
-                <?php else: ?>
-=======
                 <?php else : ?>
->>>>>>> master
                 <li class="head-li"><a class="head-lien" href="profil.php">Profil</a></li>
                 <li class="head-li"><a class="head-lien" href="index.php?destroy=die">Déconnexion(<?=$_SESSION["login"] ?>)</a></li>
                 <?php endif; ?>

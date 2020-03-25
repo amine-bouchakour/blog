@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
-=======
 /* CODE SERGE */
 
 @import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Roboto&display=swap');
->>>>>>> master
 
 
 
@@ -30,17 +23,9 @@ html, body{
 
 .head-li{
     border: 3px solid #805D49;
-<<<<<<< HEAD
-    border: 3px solid #805D49;
     border-top: 7px solid #805D49;
     border-bottom: 7px solid #805D49;
     padding: 34px 38px;
-    padding: 34px 38px;
-=======
-    border-top: 7px solid #805D49;
-    border-bottom: 7px solid #805D49;
-    padding: 34px 38px;
->>>>>>> master
 }
 
 .head-li:hover{
@@ -300,40 +285,6 @@ mark{
 }
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> master
 /* ----------> CREER UN ARTICLE <---------- */
 
 
@@ -457,8 +408,6 @@ mark{
 
 
 
-<<<<<<< HEAD
-=======
 /* AMINE */
 
 #main-articles{
@@ -752,7 +701,6 @@ box-shadow: 4px 4px 12px black;
 
 
 
->>>>>>> master
 
 
 

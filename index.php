@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-<html>
-
-<head>
-<title>Index</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-
-
-
-
-<?php
-
-?>
-
-
-
-
-
-</html>
-=======
 <?php
 
 require_once("libraries/utilities.php");
@@ -83,4 +61,3 @@ ob_end_flush(); // ça permet d'éviter le bug du header d'hier
 
 ?>
 
->>>>>>> master

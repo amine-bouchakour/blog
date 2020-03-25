@@ -2,15 +2,6 @@
 
 require_once("libraries/utilities.php");
 
-<<<<<<< HEAD
-// if(!isLoged()){
-//     if($_SESSION["login"] != "admin" || $_SESSION["login"] != "modo"){
-//         redirect("index.php");
-//     }
-// }
-
-require("templates/header.phtml"); ?>
-=======
 
 require("templates/header.phtml");
 
@@ -18,7 +9,6 @@ ob_start(); // ça permet d'éviter le bug du header d'hier
 
 ?>
 
->>>>>>> master
 <main id="main-creart">
 <?php
 
@@ -95,10 +85,6 @@ if(isset($erreur)): ?>
 </main>
 <?php
 require("templates/footer.phtml");
-<<<<<<< HEAD
-?>
-=======
 
 ob_end_flush(); // ça permet d'éviter le bug du header d'hier
 ?>
->>>>>>> master

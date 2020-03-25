@@ -1,24 +1,5 @@
 <html>
 
-<<<<<<< HEAD
-<head>
-<title>Inscritpion</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-
-
-
-
-<?php
-
-?>
-
-
-
-
-
-=======
 	<head>
 		<title>Inscription</title>
 		<link rel="stylesheet" type="text/css" href="blog.css">
@@ -54,5 +35,4 @@
 		</main>
 
 	</body>
->>>>>>> master
 </html>
