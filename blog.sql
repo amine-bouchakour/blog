@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 25 mars 2020 à 20:07
+-- Généré le :  mer. 25 mars 2020 à 21:14
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -38,14 +38,15 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `id_categorie` int(11) NOT NULL,
   `date` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `articles`
 --
 
 INSERT INTO `articles` (`id`, `article`, `id_utilisateur`, `id_categorie`, `date`) VALUES
-(1, 'azjkmldkjffdskj kjfdmlkjsd:', 1, 1, '2020-03-16 23:00:00');
+(1, 'on adore le piano vive le piano pianonono cool cool', 1, 2, '2020-03-27 07:00:00'),
+(2, 'Vous aimez la guitare ? Ben c&#39;est bien :o', 1, 1, '2020-03-25 21:06:52');
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(80) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `categories`
@@ -83,14 +84,7 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
   `id_utilisateur` int(11) NOT NULL,
   `date` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `commentaires`
---
-
-INSERT INTO `commentaires` (`id`, `commentaire`, `id_article`, `id_utilisateur`, `date`) VALUES
-(1, 'Jouons de la guitare tous ensemble', 1, 1, '2020-03-25 20:04:09');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -111,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `droits` (
 
 INSERT INTO `droits` (`id`, `nom`) VALUES
 (1, 'utilisateur'),
-(42, 'modérateur'),
+(42, 'modÃ©rateur'),
 (1337, 'administrateur');
 
 -- --------------------------------------------------------
@@ -129,14 +123,15 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `avatar` varchar(255) DEFAULT 'avatars/defaut.png',
   `id_droits` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `login`, `password`, `email`, `avatar`, `id_droits`) VALUES
-(1, 'amine', '$2y$10$IMIti/SFGVE3p0XobuTKyOZSp4KM79chLHMbNt9pcSkfNtFWJfg92', 'amine@yahoo.fr', 'avatars/defaut.png', 1);
+(1, 'admin', '$2y$10$pRs4zU.nOaLP4oHn9oPgg.hgE1NasCRL4Jm3eXYMV08e1zZff1wjO', 'admin@hotmail.fr', 'avatars/defaut.png', 1337),
+(2, 'modo', '$2y$10$xrom7G2JoUU5XS8bNuCycO5a1igXY5ccw3WAhkqUWa6FocfrMrJNu', 'moderateur@hotmail.fr', 'avatars/defaut.png', 42);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

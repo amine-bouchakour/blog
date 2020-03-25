@@ -39,10 +39,10 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
                         <?php endforeach; ?>
                     </ul>
                 </li>
-                <!-- <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337 || $_SESSION['user']->droits == 42): ?> -->
+                <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337 || $_SESSION['user']->droits == 42): ?>
                 <li class="head-li"><a class="head-lien" href="creer-article.php">Créer un article</a></li>
-                <!-- <?php endif; ?> -->
-                <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == "1337"): ?>
+                <?php endif; ?>
+                <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337): ?>
                 <li class="head-li"><a class="head-lien" href="admin.php">Administration</a></li>
                 <?php endif; ?>
                 <?php if(!isset($_SESSION['user'])): ?>      
