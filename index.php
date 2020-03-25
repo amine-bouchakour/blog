@@ -37,11 +37,12 @@ require("templates/header.phtml");
     $resultattoutarticles=mysqli_fetch_all($query1);
     // var_dump($resultattoutarticles);
 
-    
+    if(!empty($requetetoutarticles)){
+
     for($i=0; $i<3; $i++){
         $date = $resultattoutarticles[$i][1];
         $datef= date('Y-m-d', strtotime($date));
-
+        
         ?>
         <div id="lastarticles"> <?php 
         echo "<div id=titre>".ucfirst($resultattoutarticles[$i][2])."</div><br/>";
@@ -51,6 +52,7 @@ require("templates/header.phtml");
         ?> </div> <br>
         <?php
     }
+}
 
 
 
