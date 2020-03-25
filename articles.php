@@ -129,7 +129,8 @@ else{
 
 
 ?>
-<?php require("templates/footer.phtml"); ?>
+<?php require("templates/footer.phtml"); 
+?>
 
 </body>
 
