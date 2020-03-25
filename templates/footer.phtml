@@ -1,0 +1,33 @@
+<?php
+if(isset($_SESSION['login']) && !empty($_SESSION['login'])){
+
+$connexion = mysqli_connect("localhost", "root", "", "blog");
+$requete_head = "SELECT * FROM `utilisateurs` WHERE login = '".$_SESSION['login']."'";
+$query_head = mysqli_query($connexion,$requete_head);
+$resultat_head = mysqli_fetch_all($query_head);
+}
+?>
+
+<footer id="foot-container">
+        <ul id="foot-ul-cont">
+            <li class="foot-listyle"><a class="foot-lien" href="index.php">Accueil</a></li>
+            <li class="foot-listyle"><a class="foot-lien" href="index.php">Créer un article</a></li>
+            <!-- <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?> -->
+            <li class="foot-listyle"><a class="foot-lien" href="cree-article.php">Créer un article</a></li>
+            <!-- <?php endif; ?> -->
+            <?php if(isset($_SESSION["login"]) && $_SESSION["login"] == "admin"): ?>
+            <li class="foot-listyle"><a class="foot-lien" href="admin.php">Administration</a></li>
+            <?php endif; ?>
+            <?php if(!isset($_SESSION["login"])): ?>      
+            <li class="foot-listyle"><a class="foot-lien" href="inscription.php">Inscription</a></li>
+            <li class="foot-listyle"><a class="foot-lien" href="connexion.php">Connexion</a></li>
+            <?php else : ?>
+            <li class="foot-listyle"><a class="foot-lien" href="profil.php">Profil</a></li>
+            <li class="foot-listyle"><a class="foot-lien" href="index.php?destroy=die">Déconnexion(<?=$_SESSION["login"] ?>)</a></li>
+            <?php endif; ?>
+        </ul>
+        <p id="copyright">©opyright 2020 Coding School | Tous droits réservés | Projet réalisé par Amine, Clément et Serge.</p>
+        <div id="vide">.</div>
+    </footer>
+</body>
+</html>
