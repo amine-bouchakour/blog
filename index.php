@@ -11,8 +11,8 @@
 </head>
 <body>
     <?php if(isset($_SESSION['user'])){
-        echo $_SESSION['user']->username; ?>
-            <a href="?disconnect">Se deconnecter</a>
+        ?>
+            <a href="profil.php"><?php echo $_SESSION['user']->username; ?></a>
    <?php } ?>
 </body>
 </html>

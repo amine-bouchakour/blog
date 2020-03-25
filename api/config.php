@@ -1,7 +1,9 @@
 <?php
     require_once('User.php');
     session_start();
-    
+    if(isset($_SESSION['user'])){
+        $_SESSION['user']->getUserInfos();
+    }
     if(isset($_GET['disconnect'])){
         $_SESSION['user']->disconnect();
     }
