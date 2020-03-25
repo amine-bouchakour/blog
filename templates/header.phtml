@@ -30,21 +30,21 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
                 <li id="dropdown" class="head-li">
                     <a class="head-lien" href="#">Catégories</a>
                     <ul id="ulofcat">
-                        <?php foreach($resultat_cat as $cat): ?>
-                            <li id="dropdown-child"><a href="articles.php?categorie=<?php echo $cat["id"] ?>&titre=<?php echo $cat["nom"] ?>&start=0"><?php echo $cat["nom"]; ?></a></li>
-                        <?php endforeach; ?>
+                        <?php foreach($resultat_cat as $cat){ ?>
+                            <li id="dropdown-child"><a href="articles.php?categorie=<?php echo $cat["id"]; ?>&titre=<?php echo $cat["nom"]; ?>&start=0"><?php echo $cat["nom"]; ?></a></li>
+                        <?php } ?>
                     </ul>
                 </li>
-                <!-- <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?> -->
+                <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?>
                 <li class="head-li"><a class="head-lien" href="cree-article.php">Créer un article</a></li>
-                <!-- <?php endif; ?> -->
+                <?php endif; ?>
                 <?php if(isset($_SESSION["login"]) && $_SESSION["login"] == "admin"): ?>
                 <li class="head-li"><a class="head-lien" href="admin.php">Administration</a></li>
                 <?php endif; ?>
                 <?php if(!isset($_SESSION["login"])): ?>      
                 <li class="head-li"><a class="head-lien" href="inscription.php">Inscription</a></li>
                 <li class="head-li"><a class="head-lien" href="connexion.php">Connexion</a></li>
-                <?php else : ?>
+                <?php else: ?>
                 <li class="head-li"><a class="head-lien" href="profil.php">Profil</a></li>
                 <li class="head-li"><a class="head-lien" href="index.php?destroy=die">Déconnexion(<?=$_SESSION["login"] ?>)</a></li>
                 <?php endif; ?>

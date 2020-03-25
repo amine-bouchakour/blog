@@ -5,8 +5,27 @@ require_once("libraries/functions.php");
 
 $idArticle = $_GET["id"];
 // var_dump($_GET);
+
 require("templates/header.phtml");
+               
+if(isset($_POST["envoyer"])){
+
+    $comment = extractSafeFromPost("commentaire");
+    if(!empty($comment)){
+
+    $requete_user = "SELECT id FROM utilisateurs WHERE login = '".$_SESSION['login']."'";
+    $query_user = mysqli_query($connexion,$requete_user);
+    $resultat_user= mysqli_fetch_all($query_user);
+
+    $requete = "INSERT INTO `commentaires`(`id`, `commentaire`, `id_article`, `id_utilisateur`, `date`) VALUES (null,\"$comment\",\"$idArticle\",'".$resultat_user[0][0]."',now())";
+    $query = mysqli_query($connexion,$requete); ?>
+    <meta http-equiv="refresh" content="0;URL=article.php?id=<?php echo $idArticle ?>">
+    <?php } else {
+        $erreur = "Veuillez entrer un commentaire";
+    }
+}
 ?>
+
     <main id="main-art">
         <?php
 
@@ -40,12 +59,13 @@ require("templates/header.phtml");
 //////////
 
         ?>
-        <section>
-            <article>
+        <section id="sec-art">
+            <article id="the-article">
                 <p id="pgp-art"><?php echo $resultat[0]["article"]; ?></p>
-                <span>créé le <?php echo $sJour2 ?> <?php echo $jour?>.<?php echo $mois2?>.<?php echo $annee?> à <?php echo $heure ?></span>
+                <span id="creation">créé le <?php echo $sJour2 ?> <?php echo $jour?> <?php echo $mois2?> <?php echo $annee?> à <?php echo $heure ?></span>
             </article>
-            <aside>
+            <aside id="art-aside">
+            <h2 id="title-of-coment">Commentaires</h2>
             <?php foreach($resultat_com as $com):
                 $date_com = $com[3];
                 $annee_com = strftime("%Y", strtotime($date_com));
@@ -62,38 +82,27 @@ require("templates/header.phtml");
                 
                 
                 ?>
-                <p><?php echo $com[2] ?></p>
-                <span>#Posté le <?php echo $sJour_com2 ?> <?php echo $jour_com ?> <?php echo $mois_com2 ?> <?php echo $annee_com ?> à <?php echo $heure_com ?>  par <?php echo $com[1]; ?> </span>
+                <div id="one-coment">
+                <p id="par-com"><?php echo $com[2] ?></p>
+                <span id="sp">#Posté le <?php echo $sJour_com2 ?> <?php echo $jour_com ?> <?php echo $mois_com2 ?> <?php echo $annee_com ?> à <?php echo $heure_com ?>  par <mark> <?php echo $com[1]; ?></mark> </span>
+                </div>
             <?php endforeach; ?>
             </aside>
 
-
-
-
-
-            <article>
-                <h2>Laisser un commentaire</h2>
-                <form action="<?php echo "article.php?id=$idArticle" ?>" method="post">
-                    <textarea name="commentaire" id="" cols="30" rows="10"></textarea>
-                    <button type="submit" name="envoyer">Envoyer le commentaire</button>
+            <article id="coment-container">
+                <h2 id="coment-title">Laisser un commentaire</h2>
+                <?php
+            if(isset($erreur)): ?>
+                <div id="error-article"><?php echo $erreur ?></div>    
+            <?php endif;?>
+                <form action="<?php echo "article.php?id=$idArticle" ?>" method="post" id="form-article">
+                    <textarea name="commentaire" id="area-art" cols="30" rows="10" ></textarea>
+                    <button type="submit" name="envoyer" id="but-sendart">Envoyer le commentaire</button>
                 </form>
 
-                <?php
-                    
-                    if(isset($_POST["envoyer"])){
-
-                    $comment = extractSafeFromPost("commentaire");
-
-                    $requete_user = "SELECT id FROM utilisateurs WHERE login = '".$_SESSION['login']."'";
-                    $query_user = mysqli_query($connexion,$requete_user);
-                    $resultat_user= mysqli_fetch_all($query_user);
-
-                    $requete = "INSERT INTO `commentaires`(`id`, `commentaire`, `id_article`, `id_utilisateur`, `date`) VALUES (null,\"$comment\",\"$idArticle\",'".$resultat_user[0][0]."',now())";
-                    $query = mysqli_query($connexion,$requete);
-
-                    }
-                ?>
+               
             </article>
+            
         </section>
     </main>
 <?php require("templates/footer.phtml"); ?>

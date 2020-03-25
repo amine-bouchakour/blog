@@ -30,8 +30,8 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
 //////////
 
 $nb_cat = 0;
-// && $_SESSION['id_droits'] == 42 || $_SESSION['id_droits'] == 1337
-if(!empty($_SESSION['login'])): ?>
+
+if(!empty($_SESSION['login'] && $_SESSION['id_droits'] == 42 || $_SESSION['id_droits'] == 1337)): ?>
     <article id="art-of-creart">
         <div id="block-creart">
 
@@ -70,9 +70,9 @@ if(isset($_POST["creer"])){
     if($art_txt != ""){
 
     $requete_insert = "INSERT INTO articles(`id`,`article`,`id_utilisateur`,`id_categorie`,`date`)VALUES(null,'".$art_txt."','".$resultat[0][0]."',$categorie,now())";
-    $query_insert = mysqli_query($connexion,$requete_insert);
-
-    }else {
+    $query_insert = mysqli_query($connexion,$requete_insert); ?>
+    <meta http-equiv="refresh" content="0;URL=index.php">
+<?php    }else {
 
     $erreur = "Veuillez inclure du texte a votre article";
     }

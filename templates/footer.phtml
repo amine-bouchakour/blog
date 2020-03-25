@@ -9,9 +9,9 @@ $resultat_head = mysqli_fetch_all($query_head);
         <ul id="foot-ul-cont">
             <li class="foot-listyle"><a class="foot-lien" href="index.php">Accueil</a></li>
             <li class="foot-listyle"><a class="foot-lien" href="index.php">Créer un article</a></li>
-            <!-- <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?> -->
+            <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?>
             <li class="foot-listyle"><a class="foot-lien" href="cree-article.php">Créer un article</a></li>
-            <!-- <?php endif; ?> -->
+            <?php endif; ?>
             <?php if(isset($_SESSION["login"]) && $_SESSION["login"] == "admin"): ?>
             <li class="foot-listyle"><a class="foot-lien" href="admin.php">Administration</a></li>
             <?php endif; ?>
