@@ -1,13 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao|Roboto&display=swap');
-
+/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Patrick+Hand|Roboto&display=swap|Liu+Jian+Mao+Cao');
+/* End Imports */
+/* Init */
 html, body{
-height: 100%;
-width: 100%;
-margin: 0;
-padding: 0;
-background-color: rgba(255, 138, 70, 0.829);
-
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(255, 138, 70, 0.829);
+    font-family: 'Roboto', sans-serif;
 }
+p{
+    margin: 0;
+}
+.error{
+    color: rgb(167, 0, 0);
+}
+/* End Init */
 
 #bodyArticles{
 background-color: rgba(255, 138, 70, 0.829);
@@ -298,6 +307,45 @@ html, body{
 
 /* ----------> HEADER <---------- */
 
+header{
+    width: 100%;
+    height: 10%;
+    background-color: #804522;
+}
+header#form{
+    width: 100%;
+    height: 10%;
+    background-color: #804522;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+header#form a{
+    color: inherit;
+    text-decoration: none;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2vw;
+    color: rgb(255, 255, 255);
+}
+header#form #home-link{
+    margin-left: 10px;
+}
+header#form #login-link-button{
+    margin-right: 10px;
+    height: 50%;
+    width: 100px;
+}
+header#form #login-link-button button{
+    width: 100%;
+    height: 100%;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    outline: none;
+    cursor: pointer
+}
 
 .head-li{
     border: 3px solid #805D49;
@@ -371,7 +419,7 @@ html, body{
 #ulofcat{
     position: relative;
     padding: 0;
-    top: 124px;
+    top: 90px;
     left: -113px;
     box-shadow: 0px 4px 12px black;
 }
@@ -595,7 +643,6 @@ mark{
 
 
 
-
 /* ----------> CREER UN ARTICLE <---------- */
 
 
@@ -715,6 +762,282 @@ mark{
 
 
 
+main#login{
+    /* background-color: #111; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+}
+main#login p{
+    margin: 0;
+}
+main#login #content{
+    width: 45%;
+    height: 65%;
+    background-color: #805D49;
+    border-radius: 5px;
+    display: flex;
+}
+main#login #content .part{
+    width: 50%;
+    height: 100%;
+}
+
+main#login #content .part.title-part{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-image: url('background-form.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+main#login #content .part.title-part p{
+    font-size: 2vw;
+    font-family: 'Pacifico', cursive;
+    color: white;
+    margin: 0;
+}
+main#login #content .part.form-part form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+main#login #content .part.form-part form p:not(.error){
+    color: white;
+}
+main#login #content .part.form-part form a{
+    color: black;
+}
+main#login #content .part.form-part form input:not([type="submit"]){
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    border: 3px solid #333;
+    background-color: white;
+    outline: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 0.8vw;
+}
+main#login #content .part.form-part form input[type="submit"]{
+    width: 50%;
+    height: 50px;
+    font-size: 0.8vw;
+    background-color: #CC6E37;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+main#login #content .part.form-part form input[type="submit"]:focus{
+    background-color: rgb(77, 53, 39);
+}
+/* End Main Form */
+/* Main profile */
+main.admin_profil{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+main.admin_profil nav{
+    height: 100%;
+    width: 10%;
+    background-color: #CC6E37;
+}
+main.admin_profil nav .nav-link{
+    width: 100%;
+    height: 50px;
+    /* background-color: rgb(148, 80, 41); */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main.admin_profil nav .nav-link:hover{
+    transition: background 250ms;
+    background-color: rgb(148, 80, 41);
+}
+main.admin_profil nav .nav-link a{
+    color: white;
+    text-decoration: none;
+}
+main.admin_profil nav .current{
+    background-color: rgb(148, 80, 41);
+}
+
+main.admin_profil section{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main#profil section article{
+    width: 70%;
+    height: 95%;
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: 2fr 1.5fr 0.5fr;
+    column-gap: 50px;
+    row-gap: 30px;
+}
+main#profil section article .content{
+    background-color: rgb(253, 196, 163);
+    border-radius: 3px;
+    color: black;
+    box-shadow: 0px 0px 10px 1px #412311;
+}
+main#profil section article .content form input[type="submit"]{
+    cursor: pointer;
+    outline: none;
+}
+main#profil section article .content form input[type="submit"]:focus{
+    transition: 250ms background;
+    background-color: #412311;
+}
+main#profil section article .content#one{
+    grid-row-start: 1;
+    grid-row-end: 4;
+}
+main#profil section article .content#two{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+main#profil section article .content#two img{
+    width: 30%;
+    height: auto;
+    border-radius: 100%;
+    border: 2px solid white;
+}
+main#profil section article .content#two a{
+    color: darkred;
+    text-decoration: none;
+}
+main#profil section article .content#three{
+    
+}
+main#profil section article .content#three form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+main#profil section article .content#three form input:not([type="submit"]){
+    width: 70%;
+    height: 30px;
+    text-align: center;
+    font-size: 1vw;
+    border: 2px solid #412311;
+    outline: none;
+    border-radius: 3px;
+}
+main#profil section article .content#three form input[type="submit"]{
+    width: 50%;
+    height: 30px;
+    border: 2px solid #412311;
+    background-color: #CC6E37;
+    color: white;
+}
+main#profil section article .content#three form input[type="submit"]:focus{
+    background-color: #412311;
+    transition: 250ms background;
+}
+main#profil section article .content#four{
+    grid-column-start: 2;
+}
+main#profil section article .content#four p{
+    margin: 0;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 1vw;
+}
+main#profil section article .content#four form{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main#profil section article .content#four form input[type="submit"]{
+    border: 1px solid #412311;
+    width: 100px;
+    height: 20px;
+    background-color: #CC6E37;
+    color: white;
+}
+main#profil section article .content#four form input[type="submit"]:focus{
+    background-color: #412311;
+    transition: 250ms background;
+}
+/* End Main profile */
+/* Main Admin */
+main#admin section{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+main#admin section article{
+    width: 30%;
+    height: 90%;
+    background-color: rgb(255, 132, 61);
+    border-radius: 5px;
+}
+main#admin section article p.title{
+    color: white;
+    height: 60px;
+    font-size: 1.5vw;
+    background-color: #130904;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+}
+main#admin section article table{
+    width: 100%;
+    height: 20px;
+    background-color: #805D49;
+    border-bottom: 2px solid white;
+}
+main#admin section article table th{
+    width: 33%;
+}
+main#admin section article .user{
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #412311;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+main#admin section article .user form input{
+    width: 50px;
+    border: 2px solid #130904;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+main#admin section article .user form input.remove{
+    background-color: darkred;
+}
 
 
 

@@ -11,3 +11,5 @@ code couleur
 #CC6E37
 
 (255, 138, 70, 0.829)
+
+SELECT article, date, nom, login from articles INNER JOIN categories ON articles.id_categorie=categories.id INNER JOIN utilisateurs ON articles.id_utilisateur=utilisateurs.id ORDER BY date DESC

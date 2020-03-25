@@ -1,5 +1,5 @@
 <?php
-
+require_once('libraries/config.php');
 require_once("libraries/utilities.php");
 
 // if(!isLoged()){
@@ -15,7 +15,8 @@ require("templates/header.phtml"); ?>
 ////////// UTILISATEURS //////////
 
 $connexion = getCo();
-$requete = "SELECT * FROM `utilisateurs` WHERE login = '".$_SESSION['login']."'";
+$username = $_SESSION['user']->username;
+$requete = "SELECT * FROM `utilisateurs` WHERE login = '$username'";
 $query = mysqli_query($connexion,$requete);
 $resultat = mysqli_fetch_all($query);
 
@@ -31,7 +32,7 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
 
 $nb_cat = 0;
 
-if(!empty($_SESSION['login'] && $_SESSION['id_droits'] == 42 || $_SESSION['id_droits'] == 1337)): ?>
+if(!empty($_SESSION['user']->username && $_SESSION['user']->droits == 42 || $_SESSION['user']->droits == 1337)): ?>
     <article id="art-of-creart">
         <div id="block-creart">
 
@@ -55,7 +56,7 @@ if(!empty($_SESSION['login'] && $_SESSION['id_droits'] == 42 || $_SESSION['id_dr
             </form>
         </div>
     </article>
-<?php elseif(empty($_SESSION["login"]) && $_SESSION["id_droits"] == 1):
+<?php elseif(empty($_SESSION['user']->username) && $_SESSION['user']->droits == 1):
 
     $erreur = "Vous devez être connecté en tant qu'administrateur ou modérateur pour accéder a cette page";
 

@@ -1,8 +1,9 @@
 <?php
-if(isset($_SESSION['login']) && !empty($_SESSION['login'])){
+if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
 
 $connexion = mysqli_connect("localhost", "root", "", "blog");
-$requete_head = "SELECT * FROM `utilisateurs` WHERE login = '".$_SESSION['login']."'";
+$username = $_SESSION['user']->username;
+$requete_head = "SELECT * FROM `utilisateurs` WHERE login = '$username'";
 $query_head = mysqli_query($connexion,$requete_head);
 $resultat_head = mysqli_fetch_all($query_head);
 
@@ -38,18 +39,18 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
                         <?php endforeach; ?>
                     </ul>
                 </li>
-                <!-- <?php if(isset($_SESSION["login"]) && $_SESSION["id_droits"] == 1337 || $_SESSION["id_droits"] == 42): ?> -->
-                <li class="head-li"><a class="head-lien" href="cree-article.php">Créer un article</a></li>
+                <!-- <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337 || $_SESSION['user']->droits == 42): ?> -->
+                <li class="head-li"><a class="head-lien" href="creer-article.php">Créer un article</a></li>
                 <!-- <?php endif; ?> -->
-                <?php if(isset($_SESSION["login"]) && $_SESSION["login"] == "admin"): ?>
+                <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == "1337"): ?>
                 <li class="head-li"><a class="head-lien" href="admin.php">Administration</a></li>
                 <?php endif; ?>
-                <?php if(!isset($_SESSION["login"])): ?>      
+                <?php if(!isset($_SESSION['user'])): ?>      
                 <li class="head-li"><a class="head-lien" href="inscription.php">Inscription</a></li>
                 <li class="head-li"><a class="head-lien" href="connexion.php">Connexion</a></li>
                 <?php else : ?>
                 <li class="head-li"><a class="head-lien" href="profil.php">Profil</a></li>
-                <li class="head-li"><a class="head-lien" href="index.php?destroy=die">Déconnexion(<?=$_SESSION["login"] ?>)</a></li>
+                <li class="head-li"><a class="head-lien" href="?disconnect">Déconnexion(<?=$_SESSION['user']->username; ?>)</a></li>
                 <?php endif; ?>
             </ul>
         </nav>

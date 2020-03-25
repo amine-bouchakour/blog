@@ -1,8 +1,13 @@
 <?php
-
+require_once('libraries/config.php');
 require_once("libraries/utilities.php");
 require_once("libraries/functions.php");
-
+if(isset($_POST['del_com'])){
+    $idcom = $_POST['id_com'];
+    $db = mysqli_connect('localhost', 'root', '', 'blog');
+    mysqli_query($db, "DELETE FROM commentaires WHERE id = '$idcom'");
+    ob_start();
+}
 $idArticle = $_GET["id"];
 // var_dump($_GET);
 
@@ -12,8 +17,8 @@ if(isset($_POST["envoyer"])){
 
     $comment = extractSafeFromPost("commentaire");
     if(!empty($comment)){
-
-    $requete_user = "SELECT id FROM utilisateurs WHERE login = '".$_SESSION['login']."'";
+    $username = $_SESSION['user']->username;
+    $requete_user = "SELECT id FROM utilisateurs WHERE login = '$username'";
     $query_user = mysqli_query($connexion,$requete_user);
     $resultat_user= mysqli_fetch_all($query_user);
 
@@ -37,7 +42,7 @@ if(isset($_POST["envoyer"])){
         
 ////////// COMMENTAIRES //////////
 
-        $requete_com = "SELECT u.id, u.login, c.commentaire, c.date FROM utilisateurs AS u INNER JOIN `commentaires` AS c ON u.id = c.id_utilisateur WHERE id_article = \"$idArticle\"";
+        $requete_com = "SELECT u.id, u.login, c.commentaire, c.date, c.id FROM utilisateurs AS u INNER JOIN `commentaires` AS c ON u.id = c.id_utilisateur WHERE id_article = \"$idArticle\"";
         $query_com = mysqli_query($connexion,$requete_com);
         $resultat_com = mysqli_fetch_all($query_com);
 
@@ -84,7 +89,11 @@ if(isset($_POST["envoyer"])){
                 ?>
                 <div id="one-coment">
                 <p id="par-com"><?php echo $com[2] ?></p>
-                <span id="sp">#Posté le <?php echo $sJour_com2 ?> <?php echo $jour_com ?> <?php echo $mois_com2 ?> <?php echo $annee_com ?> à <?php echo $heure_com ?>  par <mark> <?php echo $com[1]; ?></mark> </span>
+                <span id="sp">
+                    <?php if($_SESSION['user']->droits == "42" || $_SESSION['user']->droits == "1337" || $com[0] == $_SESSION['user']->id){ ?>
+                        <form method="post" style="margin-right: 50px;"><input type="hidden" name="id_com" value="<?php echo $com[4]; ?>"><input type="submit" style="border: none; cursor: pointer; background-color: red; color: white;" name="del_com" value="X"></form>
+                    <?php } ?>
+                    #Posté le <?php echo $sJour_com2 ?> <?php echo $jour_com ?> <?php echo $mois_com2 ?> <?php echo $annee_com ?> à <?php echo $heure_com ?>  par <mark> <?php echo $com[1]; ?></mark> </span>
                 </div>
             <?php endforeach; ?>
             </aside>
@@ -106,3 +115,4 @@ if(isset($_POST["envoyer"])){
         </section>
     </main>
 <?php require("templates/footer.phtml"); ?>
+<?php ob_end_flush(); ?>

@@ -1,3 +1,5 @@
+<?php require_once('libraries/config.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,27 +34,25 @@ require("templates/header.phtml");
 <section id="lastnews">
 <?php
     $connexion=mysqli_connect("localhost","root","","blog");
-    $requetetoutarticles="SELECT article,date,nom,login from articles INNER JOIN categories ON articles.id_categorie=categories.id INNER JOIN utilisateurs ON articles.id_utilisateur=utilisateurs.id ORDER BY date DESC";
+    $requetetoutarticles="SELECT categories.nom, articles.date, utilisateurs.login, articles.id FROM articles INNER JOIN categories ON categories.id = articles.id_categorie INNER JOIN utilisateurs ON utilisateurs.id = articles.id_utilisateur ORDER BY articles.date DESC";
     $query1=mysqli_query($connexion,$requetetoutarticles);
     $resultattoutarticles=mysqli_fetch_all($query1);
     // var_dump($resultattoutarticles);
 
-    if(!empty($requetetoutarticles)){
-
+    
     for($i=0; $i<3; $i++){
         $date = $resultattoutarticles[$i][1];
         $datef= date('Y-m-d', strtotime($date));
-        
+
         ?>
         <div id="lastarticles"> <?php 
-        echo "<div id=titre>".ucfirst($resultattoutarticles[$i][2])."</div><br/>";
-        echo '"'.ucfirst($resultattoutarticles[$i][0]).'"'.'<br/></br>';
-        echo "By ".ucfirst($resultattoutarticles[$i][3]);
+        echo "<div id=titre>".ucfirst($resultattoutarticles[$i][0])."</div><br/>";
+        echo "<a href=\"article.php?id=".$resultattoutarticles[$i][3]."\">Voir l'arcticle</a><br/>";
+        echo "By ".ucfirst($resultattoutarticles[$i][2]);
         echo " le ".$datef."<br/>";
         ?> </div> <br>
         <?php
     }
-}
 
 
 
