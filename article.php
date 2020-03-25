@@ -7,6 +7,11 @@ $idArticle = $_GET["id"];
 // var_dump($_GET);
 
 require("templates/header.phtml");
+<<<<<<< HEAD
+=======
+
+ob_start(); // ça permet d'éviter le bug du header d'hier
+>>>>>>> master
                
 if(isset($_POST["envoyer"])){
 
@@ -105,4 +110,11 @@ if(isset($_POST["envoyer"])){
             
         </section>
     </main>
+<<<<<<< HEAD
 <?php require("templates/footer.phtml"); ?>
+=======
+<?php require("templates/footer.phtml"); 
+
+ob_end_flush(); // ça permet d'éviter le bug du header d'hier
+?>
+>>>>>>> master
