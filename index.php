@@ -1,22 +1,6 @@
-<?php require_once('libraries/config.php'); ?>
+<?php 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    
-    <title>Index</title>
-</head>
-
-
-
-<body id="body_index">
-
-<main id="main_index">
-<?php
-
+require_once('libraries/config.php');
 require_once("libraries/utilities.php");
 require_once("libraries/functions.php");
 
@@ -71,6 +55,3 @@ require("templates/header.phtml");
 </body>
 
 <?php require("templates/footer.phtml"); ?>
-
-
-</html>

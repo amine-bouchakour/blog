@@ -1,14 +1,3 @@
-<html>
-
-<head>
-<title>All Articles</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="css/blog.css">
-
-</head>
-
-
-<body id="bodyArticles">
 <?php
 require_once('libraries/config.php');
 require_once("libraries/utilities.php");
@@ -131,9 +120,3 @@ else{
 ?>
 <?php require("templates/footer.phtml"); 
 ?>
-
-</body>
-
-
-
-</html>

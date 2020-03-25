@@ -31,24 +31,24 @@ $resultat_cat = mysqli_fetch_all($query_cat,MYSQLI_ASSOC);
         <nav>
             <ul id="ul-container">
                 <li class="head-li"><a class="head-lien" href="index.php">Accueil</a></li>
-                <li id="dropdown" class="head-li">
-                    <a class="head-lien" href="#">Catégories</a>
-                    <ul id="ulofcat">
-                        <?php foreach($resultat_cat as $cat): ?>
-                            <li id="dropdown-child"><a href="articles.php?categorie=<?php echo $cat["id"] ?>&titre=<?php echo $cat["nom"] ?>&start=0"><?php echo $cat["nom"]; ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
-                <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337 || $_SESSION['user']->droits == 42): ?>
-                <li class="head-li"><a class="head-lien" href="creer-article.php">Créer un article</a></li>
-                <?php endif; ?>
-                <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337): ?>
-                <li class="head-li"><a class="head-lien" href="admin.php">Administration</a></li>
-                <?php endif; ?>
                 <?php if(!isset($_SESSION['user'])): ?>      
                 <li class="head-li"><a class="head-lien" href="inscription.php">Inscription</a></li>
                 <li class="head-li"><a class="head-lien" href="connexion.php">Connexion</a></li>
                 <?php else : ?>
+                    <li id="dropdown" class="head-li">
+                        <a class="head-lien" href="#">Catégories</a>
+                        <ul id="ulofcat">
+                            <?php foreach($resultat_cat as $cat): ?>
+                                <li id="dropdown-child"><a href="articles.php?categorie=<?php echo $cat["id"] ?>&titre=<?php echo $cat["nom"] ?>&start=0"><?php echo $cat["nom"]; ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                    <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337 || $_SESSION['user']->droits == 42): ?>
+                        <li class="head-li"><a class="head-lien" href="creer-article.php">Créer un article</a></li>
+                    <?php endif; ?>
+                    <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337): ?>
+                        <li class="head-li"><a class="head-lien" href="admin.php">Administration</a></li>
+                    <?php endif; ?>
                 <li class="head-li"><a class="head-lien" href="profil.php">Profil</a></li>
                 <li class="head-li"><a class="head-lien" href="?disconnect">Déconnexion(<?=$_SESSION['user']->username; ?>)</a></li>
                 <?php endif; ?>

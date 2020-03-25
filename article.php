@@ -16,17 +16,21 @@ require("templates/header.phtml");
 if(isset($_POST["envoyer"])){
 
     $comment = extractSafeFromPost("commentaire");
-    if(!empty($comment)){
-    $username = $_SESSION['user']->username;
-    $requete_user = "SELECT id FROM utilisateurs WHERE login = '$username'";
-    $query_user = mysqli_query($connexion,$requete_user);
-    $resultat_user= mysqli_fetch_all($query_user);
+    if(isset($_SESSION["user"])){
+        if(!empty($comment)){
+        $username = $_SESSION['user']->username;
+        $requete_user = "SELECT id FROM utilisateurs WHERE login = '$username'";
+        $query_user = mysqli_query($connexion,$requete_user);
+        $resultat_user= mysqli_fetch_all($query_user);
 
-    $requete = "INSERT INTO `commentaires`(`id`, `commentaire`, `id_article`, `id_utilisateur`, `date`) VALUES (null,\"$comment\",\"$idArticle\",'".$resultat_user[0][0]."',now())";
-    $query = mysqli_query($connexion,$requete); ?>
-    <meta http-equiv="refresh" content="0;URL=article.php?id=<?php echo $idArticle ?>">
-    <?php } else {
-        $erreur = "Veuillez entrer un commentaire";
+        $requete = "INSERT INTO `commentaires`(`id`, `commentaire`, `id_article`, `id_utilisateur`, `date`) VALUES (null,\"$comment\",\"$idArticle\",'".$resultat_user[0][0]."',now())";
+        $query = mysqli_query($connexion,$requete); ?>
+        <meta http-equiv="refresh" content="0;URL=article.php?id=<?php echo $idArticle ?>">
+        <?php } else {
+            $erreur = "Veuillez entrer un commentaire";
+        }
+    } else {
+        $erreur = "Vous devez être connecté pour poster un commentaire";
     }
 }
 ?>

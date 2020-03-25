@@ -7,21 +7,22 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
     $query_head = mysqli_query($connexion,$requete_head);
     $resultat_head = mysqli_fetch_all($query_head);
 }
+
 ?>
 
 <footer id="foot-container">
         <ul id="foot-ul-cont">
             <li class="foot-listyle"><a class="foot-lien" href="index.php">Accueil</a></li>
-            <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337 || $_SESSION['user']->droits == 42): ?>
-            <li class="foot-listyle"><a class="foot-lien" href="cree-article.php">Créer un article</a></li>
-            <?php endif; ?>
-            <?php if(isset($_SESSION['user']) && $_SESSION['user']->droits == 1337): ?>
-            <li class="foot-listyle"><a class="foot-lien" href="admin.php">Administration</a></li>
-            <?php endif; ?>
             <?php if(!isset($_SESSION['user'])): ?>      
             <li class="foot-listyle"><a class="foot-lien" href="inscription.php">Inscription</a></li>
             <li class="foot-listyle"><a class="foot-lien" href="connexion.php">Connexion</a></li>
             <?php else : ?>
+                <?php if($_SESSION['user']->droits == 1337 || $_SESSION['user']->droits == 42): ?>
+                <li class="foot-listyle"><a class="foot-lien" href="cree-article.php">Créer un article</a></li>
+                <?php endif; ?>
+                <?php if($_SESSION['user']->droits == 1337): ?>
+                    <li class="foot-listyle"><a class="foot-lien" href="admin.php">Administration</a></li>
+                <?php endif; ?>
             <li class="foot-listyle"><a class="foot-lien" href="profil.php">Profil</a></li>
             <li class="foot-listyle"><a class="foot-lien" href="?disconnect">Déconnexion(<?=$_SESSION['user']->username; ?>)</a></li>
             <?php endif; ?>
@@ -31,6 +32,3 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
     </footer>
 </body>
 </html>
-
-
-
