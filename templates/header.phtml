@@ -1,11 +1,15 @@
 <?php
+if(isset($_SESSION['login']) && !empty($_SESSION['login'])){
+
 $connexion = mysqli_connect("localhost", "root", "", "blog");
 $requete_head = "SELECT * FROM `utilisateurs` WHERE login = '".$_SESSION['login']."'";
 $query_head = mysqli_query($connexion,$requete_head);
 $resultat_head = mysqli_fetch_all($query_head);
 
 // var_dump($_SESSION);
+}
 
+$connexion = mysqli_connect("localhost", "root", "", "blog");
 
 $requete_cat = "SELECT * FROM categories";
 $query_cat = mysqli_query($connexion, $requete_cat);
