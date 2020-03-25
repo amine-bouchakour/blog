@@ -10,7 +10,7 @@
 
 <body id="bodyArticles">
 <?php
-
+require_once('libraries/config.php');
 require_once("libraries/utilities.php");
 require_once("libraries/functions.php");
 
@@ -21,7 +21,7 @@ require("templates/header.phtml");
     
 <?php
 
-if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
+if(isset($_SESSION['user'])){
 
     $categorie=$_GET["categorie"];
 

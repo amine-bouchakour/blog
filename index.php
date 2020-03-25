@@ -39,21 +39,25 @@ require("templates/header.phtml");
     $resultattoutarticles=mysqli_fetch_all($query1);
     // var_dump($resultattoutarticles);
 
-    
-    for($i=0; $i<3; $i++){
-        $date = $resultattoutarticles[$i][1];
-        $datef= date('Y-m-d', strtotime($date));
+    if(!empty($resultattoutarticles)){
+        
+    foreach($resultattoutarticles as $article){
 
+        $date = $article[1];
+        $datef= date('Y-m-d', strtotime($date));
         ?>
         <div id="lastarticles"> <?php 
-        echo "<div id=titre>".ucfirst($resultattoutarticles[$i][0])."</div><br/>";
-        echo "<a href=\"article.php?id=".$resultattoutarticles[$i][3]."\">Voir l'arcticle</a><br/>";
-        echo "By ".ucfirst($resultattoutarticles[$i][2]);
+        echo "<div id=titre>".ucfirst($article[0])."</div><br/>";
+        echo "<a href=\"article.php?id=".$article[3]."\">Voir l'arcticle</a><br/>";
+        echo "By ".ucfirst($article[2]);
         echo " le ".$datef."<br/>";
         ?> </div> <br>
         <?php
     }
-
+    }
+    else{
+        echo "<h1>Pas d'articles récemment posté</h1>";
+    }
 
 
 ?>
