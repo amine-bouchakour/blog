@@ -86,12 +86,9 @@ if(isset($_SESSION['login']) and !empty($_SESSION['login'])){
                 <li><a href="articles.php?categorie=<?php echo $resultatlien_nom_id[$i][1] ?>&amp;titre=<?php echo $resultatlien_nom_id[$i][0] ?>&amp;start=<?php echo $start=0 ?>"><?php  echo $resultatlien_nom_id[$i][0] ?></a></li> 
                     <?php } $compte=0; } ?>
 
-            <!-- <li><a href="articles.php?categorie=1">1</a></li>
-            <li><a href="articles.php?categorie=</a></li>
-            <li><a href="articles.php?categorie=3">3</a></li>
-            <li><a href="articles.php?categorie=4">4</a></li> -->
         </ul>
             </li>
+        </ul>
         </th>
             
             <?php for($k=$_GET['start']; $k<count($resultattoutarticles); $k++){
