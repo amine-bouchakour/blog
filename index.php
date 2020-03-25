@@ -48,7 +48,7 @@ require("templates/header.phtml");
 </section>
 
 <div class="aligncenter">
-<a href="articles.php?categorie=&titre=&start=" >Voir tous les articles</a>
+<a id="lien-aligncenter" href="articles.php?categorie=&titre=&start=" >Voir tous les articles</a>
 </div>
 <br>
 </main>

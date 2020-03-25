@@ -123,6 +123,7 @@
             </article>
         </section>
     </main>
+<?php require("templates/footer.phtml"); ?>
 </body>
 </html>
 

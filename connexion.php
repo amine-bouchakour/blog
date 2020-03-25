@@ -37,7 +37,7 @@
 </head>
 <body>
     <header id="form">
-        <a href="" id="home-link"><h1>Music'n blog</h1></a>
+        <a href="index.php" id="home-link"><h1>Music'n blog</h1></a>
         <a href="inscription.php" id="login-link-button"><button>Inscription</button></a>
     </header>
     <main id="login">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </main>
-
+<?php require("templates/footer.phtml") ?>
 
 
 

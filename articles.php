@@ -58,56 +58,57 @@ if(isset($_SESSION['user'])){
                                                                                     <!-- Lien a recuperer pour venir sur cette page -->
                                                                                     <!-- "articles.php?categorie=&titre=&start=" -->
 
-<main id="main_articles">
+<main id="main-articles">
+    <section id="section-articles">
+        <table>
 
-    <table>
+            <th>
+            <ul id="menu-accordeon">
+                <li><a href="#" class="titrePrincipal"> <?php if(isset($_GET['titre']) && !empty($_GET['titre'])) {echo $_GET['titre'];} else echo 'Choisir catégories'; ?></a>
+                <ul>
+                
+                <?php 
 
-        <th>
-        <ul id="menu-accordeon">
-            <li><a href="#" class="titrePrincipal"> <?php if(isset($_GET['titre']) && !empty($_GET['titre'])) {echo $_GET['titre'];} else echo 'Choisir catégories'; ?></a>
-            <ul>
-            
-            <?php 
+                    for ($i=0; $i<$nombre_titres; $i++){ 
+                        if($_GET['titre']!=$resultatlien_nom_id[$i][0]){
+                        ?> 
+                    <li><a href="articles.php?categorie=<?php echo $resultatlien_nom_id[$i][1] ?>&amp;titre=<?php echo $resultatlien_nom_id[$i][0] ?>&amp;start=<?php echo $start=0 ?>"><?php  echo $resultatlien_nom_id[$i][0] ?></a></li> 
+                        <?php } $compte=0; } ?>
 
-                for ($i=0; $i<$nombre_titres; $i++){ 
-                    if($_GET['titre']!=$resultatlien_nom_id[$i][0]){
+            </ul>
+                </li>
+            </ul>
+            </th>
+                
+                <?php for($k=$_GET['start']; $k<count($resultattoutarticles); $k++){
                     ?> 
-                <li><a href="articles.php?categorie=<?php echo $resultatlien_nom_id[$i][1] ?>&amp;titre=<?php echo $resultatlien_nom_id[$i][0] ?>&amp;start=<?php echo $start=0 ?>"><?php  echo $resultatlien_nom_id[$i][0] ?></a></li> 
-                    <?php } $compte=0; } ?>
 
-        </ul>
-            </li>
-        </ul>
-        </th>
+                <tr><td class="articles"> <a id="lien-articles-cat" href="article.php?id=<?php echo $resultattoutarticles[$k][0]; ;?>"> <?php echo $resultattoutarticles[$k][1]; $compte++; ?></a></td></tr>
+
+                <?php if($compte==5){break;}  }?>
+
+        </table>
+
+
+        <?php 
+        if($_GET['start']>1){
             
-            <?php for($k=$_GET['start']; $k<count($resultattoutarticles); $k++){
-                ?> 
-
-            <tr><td class="articles"> <a href="article.php?id=<?php echo $resultattoutarticles[$k][0]; ;?>"> <?php echo $resultattoutarticles[$k][1]; $compte++; ?></a></td></tr>
-
-            <?php if($compte==5){break;}  }?>
-
-    </table>
-
-
-    <?php 
-    if($_GET['start']>1){
+        ?> 
+        <section id="pagination">
         
-       ?> 
-    <section id="pagination">
-       
-       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Articles précédents</a> 
-       <?php }?>
+        <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] - 5;?>"> Articles précédents</a> 
+        <?php }?>
 
-   <?php if(count($resultattoutarticles)>5 && $compte>4){
+    <?php if(count($resultattoutarticles)>5 && $compte>4){
 
-       ?> 
-    <section id="pagination">
-       
-       <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivants</a>
-       <?php }?>
-       </section>
-       </main>                                                                   
+        ?> 
+        <section id="pagination">
+        
+        <a href="articles.php?categorie=<?php echo $_GET['categorie'] ?>&amp;titre=<?php echo $_GET['titre'] ?>&amp;start=<?php echo $start= $_GET['start'] + 5;?>"> Articles suivants</a>
+        <?php }?>
+        </section>
+    </section>
+</main>                                                                   
 
     <?php
 

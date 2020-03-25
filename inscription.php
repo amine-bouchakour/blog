@@ -59,7 +59,7 @@
             </div>
         </div>
     </main>
-
+<?php require("templates/footer.phtml"); ?>
 
 
 
